@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/default.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+  <!-- KaTeX core JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <!-- Auto-render extension -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- Configure auto-render -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+	document.querySelectorAll('span.math.inline, div.math.display').forEach(function(el) {
+            katex.render(el.textContent, el, {
+		throwOnError: false,
+		displayMode: el.tagName.toLowerCase() === "div"
+            });
+	});
+    });
+  </script>
+
+  
+  <title>Theodoulos Garefalakis</title>
+</head>
+
+
+<body>
+  <div class="container">
+    <nav class="navbar is-transparent" role="navigation">
+      <div class="navbar-brand">
+	<a href="/" class="navbar-item">Theodoulos Garefalakis</a>
+      </div>
+      <div class="navbar-menu">
+	<div class="navbar-end">
+	  <a class="navbar-item" href="/content/teaching">Teaching</a>
+	  <a class="navbar-item" href="/content/research">Research</a>
+	  <a class="navbar-item" href="/content/activities/">Activities</a>
+	</div>
+      </div>
+    </nav>
+    <br> <br>
+    <div class="block">
+<h1 class="page-title"> Welcome </h1>
+<hr>
+</div>
+
+<div class="columns">
+  <div class="column is-one-quarter">
+    <div class="avatar">
+      <img src="/content/static/Theo-Garefalakis.jpg"	    
+	   style="object-fit:contain;
+		  width:310px;
+		  height:340px"/>
+    </div>
+  </div>
+  <div class="column">
+    I am a professor at the <a href="http://math.uoc.gr/el/">Department of Mathematics and Applied Mathematics</a> of the <a href="http://www.uoc.gr/">University of Crete</a>. My research interests include theoretical and algorithmic aspects of finite fields, cryptography, coding theory and combinatorics. Here is a <a href="assets/bio-english.pdf">short CV</a>.
+    <br> <br>
+    <p class="section-title has-text-weight-medium"> Contact Details </p>
+    <table>
+      <tr><td><span class="section-subtitle">Email:&nbsp;</span></th>
+	<td><a href="mailto:tgaref@uoc.gr">tgaref@uoc.gr</a> / <a href="mailto:tgaref@gmail.com">tgaref@gmail.com</a></td></tr>
+
+      <tr><td><span class="section-subtitle">Address:&nbsp;</span></td>
+	<td> Department of Mathematics &amp; Applied Mathematics,</td></tr>
+      <tr><td> </td> <td>University of Crete, 70013 Heraklion, Geece </td></tr>
+
+      <tr><td><span class="section-subtitle">Office:&nbsp;</span></td><td> Γ216</td></tr>
+
+      <tr><td><span class="section-subtitle">Phone:&nbsp;</span></td> <td> (+30) 2810 393845</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="box">
+  <div class="section-title has-text-weight-medium"> <i id=icon class="fa fa-address-card"></i> Academic Positions </div>
+  <table>
+    <tr> <td><span class="section-subtitle">2019 - present:&nbsp;</span></td><td> Professor, Department of Mathematics and Applied Mathematics, University of Crete</td></tr>
+    <tr> <td><span class="section-subtitle">2013 - 2019:&nbsp;</span></td><td> Associate Professor, Department of Mathematics and Applied Mathematics, University of Crete</td></tr>
+    <tr> <td><span class="section-subtitle">2004 - 2013:&nbsp;</span></td><td> Assistant Professor, Department of Mathematics, University of Crete</td></tr>
+  </table>
+</div>
+
+<div class="box">
+  <div class="section-title has-text-weight-medium"> <i id=icon class="fa fa-graduation-cap"></i> Education </div>
+  <table>
+    <tr> <td><span class="section-subtitle">1997 - 2000:&nbsp;</span></td><td> Department of Computer Science, University of Toronto</td></tr>
+    <tr> <td><span class="section-subtitle">1995 - 1997:&nbsp;</span></td><td> M.Sc., Department of Computer Science, University of Toronto</td></tr>
+    <tr> <td><span class="section-subtitle">1990 - 1995:&nbsp;</span></td><td> Department of Computer Science, University of Crete</td></tr>
+  </table>
+</div>
+
+  </div>
+
+  <br>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+	<i class="fa fa-copyright"></i> Theodoulos Garefalakis. Site built with <a href="https://www.getzola.org/">Avdou</a> and <a href="https://bulma.io/">Bulma</a>.
+	Last update: .
+      </p>
+    </div>
+  </footer>
+  
+</body>
+
+</html>

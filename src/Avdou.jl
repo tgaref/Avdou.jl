@@ -1,0 +1,75 @@
+module Avdou
+
+include("Shortcodes.jl")
+include("Document.jl")
+include("Patterns.jl")
+include("Context.jl")
+include("Rules.jl")
+
+
+using .DocumentMod: Document
+using .PatternsMod: Pattern, AND, OR, DIFF, SIMPLE
+using .RulesMod: Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route, expand_shortcodes
+
+
+export Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
+export Document
+export Pattern, AND, OR, DIFF, SIMPLE
+export build, serve, expand_shortcodes
+
+struct Site
+    site_dir::String
+    public_dir::String
+    copies::Vector{Copy}
+    rules::Vector{Rule}
+end
+
+using HTTP
+using Sockets
+# using FilePathsBase: joinpath, isfile
+
+function build(site)
+    for copy in site.copies
+        execute(copy, site.site_dir, site.public_dir)
+    end
+
+    for rule in site.rules
+        execute(rule, site.site_dir, site.public_dir)
+    end
+end
+
+"""
+    serve(root::AbstractString; host="127.0.0.1", port=8080)
+
+Serve the static site located in `root` over HTTP.
+
+# Arguments
+- `root`: the folder containing the static files (e.g., "public")
+- `host`: IP address to bind (default "127.0.0.1")
+- `port`: port to listen on (default 8080)
+"""
+
+function serve(root::AbstractString; host::AbstractString="127.0.0.1", port::Int=8080)
+    println("Serving $root at http://$host:$port …")
+
+    function handler(req::HTTP.Request)
+        # Remove leading / from request path
+        path = joinpath(root, req.target[2:end])
+
+        # If path is a directory, look for index.html
+        if isdir(path)
+            path = joinpath(path, "index.html")
+        end
+
+        if isfile(path)
+            return HTTP.Response(200, read(path))
+        else
+            return HTTP.Response(404, "File not found: $(req.target)")
+        end
+    end
+
+    HTTP.serve(handler, host, port)
+end
+
+
+end # module Avdou
