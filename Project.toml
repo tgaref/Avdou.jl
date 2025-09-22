@@ -4,8 +4,12 @@ authors = ["Theo Garefalakis <tgaref@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+Cascadia = "54eefc05-d75b-58de-a785-1a3403f0919f"
 CombinedParsers = "5ae71ed2-6f8a-4ed1-b94f-e14e8158f19e"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+FileWatching = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 Glob = "c27321d9-0574-5035-807b-f59d2c89b15c"
+Gumbo = "708ec375-b3d6-5a57-a7ce-8257bf98657a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Mustache = "ffc61752-8dc7-55ee-8c37-f3e9cdd09e70"
 Pandoc = "f853b5e0-b243-11e9-0043-7da5023c5ee7"
@@ -13,8 +17,12 @@ Sockets = "6462fe0b-24de-5631-8697-dd941f90decc"
 YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
 
 [compat]
+Cascadia = "1.0.2"
 CombinedParsers = "0.2.1"
+Dates = "1.11.0"
+FileWatching = "1.11.0"
 Glob = "1.3.1"
+Gumbo = "0.8.3"
 HTTP = "1.10.17"
 Mustache = "1.0.21"
 Pandoc = "0.4.4"

@@ -89,6 +89,14 @@ function expand_shortcodes(shortcodes::Vector{String}, render)
     end
 end
 
+using Gumbo, Cascadia
+
+"""
+    relativize_paths(html::String; base="")
+
+Convert absolute paths in href/src to relative ones.
+"""
+
 ###### load templates
 function load_templates(dir::AbstractString)
     templates = Dict{String, String}()

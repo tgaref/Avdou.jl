@@ -12,10 +12,11 @@ using .PatternsMod: Pattern, AND, OR, DIFF, SIMPLE
 using .RulesMod: Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route, expand_shortcodes
 
 
-export Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
+
+export Site, Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
 export Document
 export Pattern, AND, OR, DIFF, SIMPLE
-export build, serve, expand_shortcodes
+export build, serve, clean, serve_and_watch, expand_shortcodes
 
 struct Site
     site_dir::String
@@ -26,7 +27,8 @@ end
 
 using HTTP
 using Sockets
-# using FilePathsBase: joinpath, isfile
+using Dates
+
 
 function build(site)
     for copy in site.copies
@@ -49,27 +51,44 @@ Serve the static site located in `root` over HTTP.
 - `port`: port to listen on (default 8080)
 """
 
-function serve(root::AbstractString; host::AbstractString="127.0.0.1", port::Int=8080)
+function serve(root::AbstractString="public"; host::AbstractString="127.0.0.1", port::Int=8080)
     println("Serving $root at http://$host:$port …")
 
     function handler(req::HTTP.Request)
         # Remove leading / from request path
-        path = joinpath(root, req.target[2:end])
-
+        path = normpath(joinpath(root, req.target[2:end]))
+        
         # If path is a directory, look for index.html
         if isdir(path)
             path = joinpath(path, "index.html")
         end
 
-        if isfile(path)
-            return HTTP.Response(200, read(path))
-        else
-            return HTTP.Response(404, "File not found: $(req.target)")
+        try 
+            if isfile(path)
+                return HTTP.Response(200, read(path))
+            else
+                return HTTP.Response(404, "File not found: $(req.target)")
+            end
+        catch
+            if e isa Base.IOError && occursin("EPIPE", sprint(showerror, e))
+                # client disconnected, ignore
+                return HTTP.Response(499, "Client closed request")
+            else
+                rethrow()
+            end
         end
     end
 
     HTTP.serve(handler, host, port)
 end
+
+function clean(public_dir = "public")
+    println("Removing files in $public_dir ...")
+    for file in readdir(public_dir; join=true)
+        rm(file; recursive=true)
+    end
+end
+
 
 
 end # module Avdou
