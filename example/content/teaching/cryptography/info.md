@@ -1,11 +1,11 @@
 ---
 title: "Α31 Κρυπτογραφία"
-type: "info"
-info: "/content/teaching/cryptography/info"
-calendar: "/content/teaching/cryptography/calendar"
-material: "/content/teaching/cryptography/material"
-assignments: "/content/teaching/cryptography/assignments"
-announcements: "/content/teaching/cryptography/announcements"
+isinfo: true
+info: "../info/"
+calendar: "../calendar/"
+material: "../material/"
+assignments: "../assignments/"
+announcements: "../announcements/"
 ---
 
 ### Γενικες Πληροφοριες
@@ -35,4 +35,4 @@ announcements: "/content/teaching/cryptography/announcements"
 τις μεθόδους που έχουν αναπτυχθεί έως τώρα. Θα ασχοληθούμε τόσο με συμμετρική κρυπτγραφία όσο και
 με κρυπτογραφία δημόσιου κλειδιού. Θα εξετάσουμε τι σημαίνει ο όρος "ασφάλεια", ανάλογα με το 
 πρόβλημα που επιχειρούμε να λύσουμε, θα δώσουμε σχετικούς ορισμούς και θα δούμε κατασκευές σχετικών
-κρυπτογραφικών συστημάτων. Μπορείτε να βρείτε την ύλη του μαθήματος [εδώ](./syllabus.pdf).
+κρυπτογραφικών συστημάτων. Μπορείτε να βρείτε την ύλη του μαθήματος [εδώ](../syllabus.pdf).

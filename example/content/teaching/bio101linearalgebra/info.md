@@ -1,11 +1,11 @@
 ---
 title: "ΒΙΟ-101.1 Εισαγωγή στα Μαθηματικά: Γραμμική Άλγεβρα"
-type: "info"
-info: "/content/teaching/bio101linearalgebra/info"
-calendar: "/content/teaching/bio101linearalgebra/calendar"
-material: "/content/teaching/bio101linearalgebra/material"
-assignments: "/content/teaching/bio101linearalgebra/assignments"
-announcements: "/content/teaching/bio101linearalgebra/announcements"
+isinfo: true
+info: "../info/"
+calendar: "../calendar/"
+material: "../material/"
+assignments: "../assignments/"
+announcements: "../announcements/"
 ---
 
 ### Γενικες Πληροφοριες
@@ -23,11 +23,9 @@ announcements: "/content/teaching/bio101linearalgebra/announcements"
 	<tr>
 		<td><b>Αξιολόγηση</b></td>
 		<td>
-		Ο τελικός βαθμός του μαθήματος θα προκύψει από το βαθμό ασκήσεων, που θα δοθούν κατά τη διάρκεια του εξαμήνου το βαθμό της τελικής εξέτασης, ως $B = \max\{0.5 \cdot A + 0.5 \cdot E, E\}$, όπου $A$ είναι ο μέσος όρος των βαθμών των ασκήσεων και $E$ είναι ο βαθμός της τελικής εξέτασης.
+			Ο τελικός βαθμός του μαθήματος θα προκύψει από το βαθμό ασκήσεων, που θα δοθούν κατά τη διάρκεια του εξαμήνου το βαθμό της τελικής εξέτασης, ως $B = \max\{0.5 \cdot A + 0.5 \cdot E, E\}$, όπου $A$ είναι ο μέσος όρος των βαθμών των ασκήσεων και $E$ είναι ο βαθμός της τελικής εξέτασης.
 		</td>
-
-	</tr>
-  
+	</tr> 
 </table>
 ###
 

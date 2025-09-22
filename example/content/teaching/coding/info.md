@@ -1,11 +1,11 @@
 ---
 title: "Α32 Κωδικοποίηση"
-type: "info"
-info: "/content/teaching/coding/info"
-calendar: "/content/teaching/coding/calendar"
-material: "/content/teaching/coding/material"
-assignments: "/content/teaching/coding/assignments"
-announcements: "/content/teaching/coding/announcements"
+isinfo: true
+info: "../info/"
+calendar: "../calendar/"
+material: "../material/"
+assignments: "../assignments/"
+announcements: "../announcements/"
 ---
 
 ### Γενικες Πληροφοριες
@@ -35,4 +35,4 @@ announcements: "/content/teaching/coding/announcements"
 Στο μάθημα θα μελετήσουμε κώδικες διόρθωσης λαθών (error correction codes).
 Θα δούμε τις βασικές τους παραμέτρους και φράγματα που ικανοποιούν. Θα δούμε
 κατασκευές γραμμικών κωδίκων και κάποιους γνωστούς κώδικες, όπως οι κώδικες Hamming,
-οι Reed-Muller και οι Reed-Solomon. Μπορείτε να βρείτε την ύλη του μαθήματος [εδώ](./syllabus.pdf).
+οι Reed-Muller και οι Reed-Solomon. Μπορείτε να βρείτε την ύλη του μαθήματος [εδώ](../syllabus.pdf).

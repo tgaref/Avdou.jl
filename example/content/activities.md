@@ -12,7 +12,7 @@ title: "Activities"
 :::
 
 :::box
-[4o Θερινό Σχολείο Μαθηματικών "Μαθηματικές ΑποΔράσεις"](/content/activities/summerschool25)
+[4o Θερινό Σχολείο Μαθηματικών "Μαθηματικές ΑποΔράσεις"](summerschool25/)
 :::
 
 :::box
@@ -20,11 +20,11 @@ title: "Activities"
 :::
 
 :::box
-[10th Greek Algebra and Number Theory Conference](https://sites.google.com/view/gantconference2025/)}
+[10th Greek Algebra and Number Theory Conference](https://sites.google.com/view/gantconference2025/)
 :::
 
 :::box
-[3o Θερινό Σχολείο Μαθηματικών "Μαθηματικές ΑποΔράσεις"](/content/activities/summerschool24)
+[3o Θερινό Σχολείο Μαθηματικών "Μαθηματικές ΑποΔράσεις"](summerschool24/)
 :::
 
 :::box
