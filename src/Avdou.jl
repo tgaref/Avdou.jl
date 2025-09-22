@@ -1,5 +1,6 @@
 module Avdou
 
+include("macros.jl")
 include("Shortcodes.jl")
 include("Document.jl")
 include("Patterns.jl")
@@ -7,12 +8,14 @@ include("Context.jl")
 include("Rules.jl")
 
 
+using .MarcosMod: @context
 using .DocumentMod: Document
 using .PatternsMod: Pattern, AND, OR, DIFF, SIMPLE
 using .RulesMod: Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route, expand_shortcodes
 
 
 
+export @context
 export Site, Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
 export Document
 export Pattern, AND, OR, DIFF, SIMPLE
