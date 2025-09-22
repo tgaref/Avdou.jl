@@ -3,9 +3,6 @@ module MarcosMod
 export @context
 
 macro context(block)
-    # Capture the module where the macro is called
-    caller_mod = __module__
-
     stmts = block.head == :block ? block.args : [block]
 
     pairs = Expr[]
@@ -16,8 +13,7 @@ macro context(block)
             key = string(stmt.args[1])
             val = stmt.args[2]
             # Wrap the value in esc and a let for caller module
-#            push!(pairs, :( $key => Base.invokelatest(() -> $val) ))
-            push!(pairs, :( $key => $val ))
+            push!(pairs, :( $key => Base.invokelatest(() -> $val) ))
         else
             error("@context only accepts assignments")
         end
