@@ -21,6 +21,12 @@ struct Rule
     route::Function
 end
 
+Rule(; pattern, filters=[], templates=[], route="") = Rule(pattern, filters, templates, route)
+Rule(dict) = Rule(dict[:pattern], dict[:filters], dict[:templates], dict[:route])
+
+Copy(; pattern, route="") = Copy(pattern, route)
+Copy(dict) = Copy(dict[:pattern], dict[:route])
+
 function execute(copy::Copy, site_dir::String, public_dir::String)
     for file in filter(isfile, expand_pattern(copy.pattern, site_dir))
         path = joinpath(public_dir, copy.route(file))

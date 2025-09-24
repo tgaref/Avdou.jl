@@ -8,14 +8,14 @@ include("Context.jl")
 include("Rules.jl")
 
 
-using .MarcosMod: @context
+using .MarcosMod: @context, @rule, @templates, @rules, @copy, @copies, @site
 using .DocumentMod: Document
 using .PatternsMod: Pattern, AND, OR, DIFF, SIMPLE
 using .RulesMod: Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route, expand_shortcodes
 
 
 
-export @context
+export @context, @rule, @templates, @rules, @copy, @copies, @site
 export Site, Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
 export Document
 export Pattern, AND, OR, DIFF, SIMPLE
@@ -27,6 +27,9 @@ struct Site
     copies::Vector{Copy}
     rules::Vector{Rule}
 end
+
+Site(; site_dir = "", public_dir = "public", copies=[], rules=[]) = Site(site_dir, public_dir, copies, rules)
+Site(dict) = Site(dict[:site_dir], dict[:public_dir], dict[:copies], dict[:rules])
 
 using HTTP
 using Sockets
