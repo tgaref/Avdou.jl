@@ -1,9 +1,9 @@
 module RulesMod
 
-export Rule, Copy, Context, execute, set_extension, nice_route, pandoc_md_to_html, load_templates, expand_shortcodes
+export Rule, Copy, execute, set_extension, nice_route, pandoc_md_to_html, load_templates, expand_shortcodes
 
 using ..DocumentMod: Document, load_document
-using ..ContextMod
+using ..ContextMod: Context
 using ..PatternsMod
 using ..ShortcodesMod: replace_shortcodes
 
@@ -36,7 +36,7 @@ function execute(copy::Copy, site_dir::String, public_dir::String)
 end
            
 function execute(rule::Rule, site_dir::String, public_dir::String)
-    for file in filter(isfile, expand_pattern(rule.pattern, site_dir))
+     for file in filter(isfile, expand_pattern(rule.pattern, site_dir))
          # create Document
         doc = load_document(file)
 
@@ -94,14 +94,6 @@ function expand_shortcodes(shortcodes::Vector{String}, render)
         Document(doc.path, new_content, doc.metadata)
     end
 end
-
-using Gumbo, Cascadia
-
-"""
-    relativize_paths(html::String; base="")
-
-Convert absolute paths in href/src to relative ones.
-"""
 
 ###### load templates
 function load_templates(dir::AbstractString)

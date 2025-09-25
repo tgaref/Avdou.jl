@@ -8,41 +8,45 @@ include("Context.jl")
 include("Rules.jl")
 
 
-using .MarcosMod: @context, @rule, @templates, @rules, @copy, @copies, @site
+using .ContextMod: Context, Data, Mine
+using .MarcosMod: @context, @rule, @templates, @rules, @copy, @copies, @site, @mine
 using .DocumentMod: Document
 using .PatternsMod: Pattern, AND, OR, DIFF, SIMPLE
-using .RulesMod: Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route, expand_shortcodes
+using .RulesMod: Rule, Copy, set_extension, pandoc_md_to_html, load_templates, nice_route, expand_shortcodes
 
 
 
-export @context, @rule, @templates, @rules, @copy, @copies, @site
-export Site, Rule, Copy, Context, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
-export Document
+export @context, @rule, @templates, @rules, @copy, @copies, @site, @mine
+export Site, Rule, Copy, execute, set_extension, pandoc_md_to_html, load_templates, nice_route
+export Document, Data, Mine, Context
 export Pattern, AND, OR, DIFF, SIMPLE
 export build, serve, clean, serve_and_watch, expand_shortcodes
 
 struct Site
-    site_dir::String
-    public_dir::String
+    sitedir::String
+    publicdir::String
     copies::Vector{Copy}
     rules::Vector{Rule}
 end
 
-Site(; site_dir = "", public_dir = "public", copies=[], rules=[]) = Site(site_dir, public_dir, copies, rules)
-Site(dict) = Site(dict[:site_dir], dict[:public_dir], dict[:copies], dict[:rules])
+Site(; sitedir = "", publicdir = "public", copies=[], rules=[]) = Site(sitedir, publicdir, copies, rules)
+Site(dict) = Site(dict[:sitedir], dict[:publicdir], dict[:copies], dict[:rules])
 
 using HTTP
 using Sockets
 using Dates
 
+execute(rule::Rule, sitedir::String, publicdir::String) = RulesMod.execute(rule, sitedir, publicdir)
+execute(copy::Copy, sitedir::String, publicdir::String) = RulesMod.execute(copy, sitedir, publicdir)
+execute(mine::Mine, sitedir::String) = ContextMod.execute(mine, sitedir)
 
 function build(site)
     for copy in site.copies
-        execute(copy, site.site_dir, site.public_dir)
+        RulesMod.execute(copy, site.sitedir, site.publicdir)
     end
 
     for rule in site.rules
-        execute(rule, site.site_dir, site.public_dir)
+        RulesMod.execute(rule, site.sitedir, site.publicdir)
     end
 end
 
@@ -88,9 +92,9 @@ function serve(root::AbstractString="public"; host::AbstractString="127.0.0.1", 
     HTTP.serve(handler, host, port)
 end
 
-function clean(public_dir = "public")
+function clean(publicdir = "public")
     println("Removing files in $public_dir ...")
-    for file in readdir(public_dir; join=true)
+    for file in readdir(publicdir; join=true)
         rm(file; recursive=true)
     end
 end

@@ -1,6 +1,6 @@
 module MarcosMod
 
-export @context, @rule, @templates, @rules, @copy, @copies
+export @context, @rule, @templates, @rules, @copy, @copies, @mine
 
 macro context(block)
     stmts = block.head == :block ? block.args : [block]
@@ -66,8 +66,7 @@ macro templates(block)
             push!(pairs, :(($dict[$name], $ctx)))
         end
     end
-    return esc(Expr(:vect, pairs... ))
-    
+    return esc(Expr(:vect, pairs... ))    
 end
 
 macro rules(block)
@@ -150,6 +149,25 @@ macro site(block)
     end
     # Build Dict in caller module
     return esc(:( Site(Dict($(pairs...))) ))
+end
+
+macro mine(block)
+    stmts = block.args
+    pairs = []
+    local sitedir
+    pairs = Expr[]
+    for stmt in stmts
+        if stmt isa LineNumberNode
+            continue
+        elseif stmt isa Symbol
+            sitedir = stmt 
+        else
+            key = stmt.args[1]
+            val = stmt.args[2]
+            push!(pairs, :( $key => $val))
+        end
+    end
+    return esc(:( execute(Mine(Dict($(pairs...))), $sitedir) ))
 end
 
 end
